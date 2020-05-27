@@ -5,7 +5,7 @@ module.exports = {
         rules: [
             {
                 test: '/\.(jsx|jx)$/',
-                loader: 'file-loader'
+                loader: 'babel-loader'
             },
             {
                 test: '/\.css$/',
