@@ -1,15 +1,15 @@
 module.exports = {
-    entry: '/browser/index.js',
-    output: '/build/main.js',
-    haha: {
-        modules: [
+    entry: './browser/index.js',
+    output: './build/main.js',
+    module: {
+        rules: [
             {
-                test: 'jsx jx',
+                test: '/\.(jsx|jx)$/',
                 loader: 'file-loader'
             },
             {
-                test: '\/$css\/',
-                loader: ["style-loader", "css-loader"]
+                test: '/\.css$/',
+                use: ["style-loader", "css-loader"]
             }
         ]
     }

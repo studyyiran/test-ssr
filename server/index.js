@@ -12,3 +12,19 @@ express.listen((req, res) => {
     res.end(string)
     // 获取后返回？
 }, '5000')
+
+
+express.listen((req, res) => {
+    // 路由匹配
+    const Component = TestPage
+    const readableString = ReactDom.renderToStringAsyn(Component)
+    // res是writeable
+    readableString.pipe(res)
+    // 获取后返回？
+}, '5000')
+
+/*
+router怎么玩？
+listen怎么玩？
+static怎么玩？
+ */

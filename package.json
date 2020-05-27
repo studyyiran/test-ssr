@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildfont": "webpack --config webpackConfig/browser.webpack.js",
+    "buildserver": "webpack --webpackConfig/server.webpack.js"
   },
   "author": "",
   "license": "ISC",
