@@ -1,5 +1,5 @@
 import React from 'react';
 
 export const TestPage = () => {
-    return <div>TestPage</div>
+    return <div>TestPage2</div>
 }

@@ -1,14 +1,24 @@
+const path = require('path')
+
 module.exports = {
     entry: './browser/index.js',
-    output: './build/main.js',
+    // output: './browser/index.js',
+    output: {
+        // output的路径麻烦一些 revolve
+        path:path.resolve(__dirname, '../build'),
+        // filename
+        filename: 'main.js'
+    },
     module: {
         rules: [
             {
-                test: '/\.(jsx|jx)$/',
-                loader: 'babel-loader'
+                // 正则不要带冒号
+                test: /\.(jsx|js)$/,
+                // exclude: /(node_modulse)/,
+                use: ['babel-loader'],
             },
             {
-                test: '/\.css$/',
+                test: /\.css$/,
                 use: ["style-loader", "css-loader"]
             }
         ]
