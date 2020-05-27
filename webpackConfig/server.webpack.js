@@ -1,19 +1,32 @@
+const path = require('path')
+
 module.exports = {
     entry: './server/index.js',
-    output: './build/server.js',
+    // 不然webpack也不知道，你是什么环境，这导致一些包例如path会有问题
+    target: "node",
+    // output: './browser/index.js',
+    output: {
+        // output的路径麻烦一些 revolve
+        path:path.resolve(__dirname, '../build'),
+        // filename
+        filename: 'server.js'
+    },
     module: {
         rules: [
             {
-                test: '/\.(jsx|jx)$/',
-                loader: 'file-loader'
+                // 正则不要带冒号
+                test: /\.(jsx|js)$/,
+                // exclude: /(node_modulse)/,
+                use: ['babel-loader'],
             },
             {
-                test: '/\.css$/',
+                test: /\.css$/,
                 use: ["style-loader", "css-loader"]
             }
         ]
     }
 }
+
 
 /*
 1. 路径

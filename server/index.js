@@ -1,14 +1,17 @@
 import express from 'express';
 import React from 'react';
-import ReactDom from 'react-dom';
+// import ReactDom from 'react-dom';
+// 注意是什么包体
+import ReactDOMServer from 'react-dom/server';
 import {TestPage} from "../share/test";
 
 const app = express();
 
 app.get('', (req, res) => {
+    console.log('get ')
     // 路由匹配
     const Component = TestPage
-    const string = ReactDom.renderToString(Component)
+    const string = ReactDOMServer.renderToString(<Component />)
     // 这块应该读取html。然后插入进去
     res.send(string)
     // 获取后返回？
