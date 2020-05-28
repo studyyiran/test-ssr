@@ -21,7 +21,7 @@ app.get('', (req, res) => {
 })
 
 // 打包后的文件夹
-app.use(express.static('build'))
+app.use(express.static(path.resolve(__dirname, '../build')))
 
 function renderToString(req, res, Component) {
     const result = ReactDOMServer.renderToString(<Component />)
@@ -30,7 +30,7 @@ function renderToString(req, res, Component) {
     // 为什么他会认为我在根路径，而不是server.js的文件路径呢？
     // console.log(__dirname)
     // console.log(path.resolve(__dirname, '../'))
-    let template = fs.readFileSync("build/index.html", {
+    let template = fs.readFileSync(path.resolve(__dirname, '../public/index.html'), {
         encoding: "utf-8"
     });
     console.log(template)

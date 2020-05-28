@@ -1,6 +1,9 @@
 const path = require('path')
 
 module.exports = {
+    node: {
+        __dirname: false,
+    },
     entry: './server/index.js',
     // 不然webpack也不知道，你是什么环境，这导致一些包例如path会有问题
     target: "node",
