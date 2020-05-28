@@ -20,6 +20,9 @@ app.get('', (req, res) => {
     // 获取后返回？
 })
 
+// 打包后的文件夹
+app.use(express.static('build'))
+
 function renderToString(req, res, Component) {
     const result = ReactDOMServer.renderToString(<Component />)
     // 这块应该读取html。然后插入进去
@@ -31,7 +34,7 @@ function renderToString(req, res, Component) {
         encoding: "utf-8"
     });
     console.log(template)
-    template = template.replace('<div id="app"></div>', result)
+    template = template.replace('INNER', result)
     // send 只能写一次
     console.log(template)
     res.send(template);
