@@ -5,10 +5,13 @@ import {routerConfig} from "./routerConfig";
 
 // 这块实际上就是路由内部匹配。
 export const RootRouter = () => {
-    return <Switch>
-        {routerConfig.map((routerInfo) => {
-            return <Route {...routerInfo} />
-        })}
-    </Switch>
+    return <div>
+        hehe
+        <Switch>
+            {routerConfig.map((routerInfo) => {
+                return <Route {...routerInfo} />
+            })}
+        </Switch>
+    </div>
 }
 

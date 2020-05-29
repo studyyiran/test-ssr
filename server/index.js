@@ -13,8 +13,7 @@ const path = require('path')
 
 const app = express();
 
-app.get('', (req, res) => {
-    console.log('get ')
+function hehe (req, res) {
     const url = req.url;
     // 这块路由匹配是一套。ssr是一套。单元没问题
     const targetRouter = routerConfig.find(({component, ...other}) => {
@@ -30,11 +29,16 @@ app.get('', (req, res) => {
 
     } else {
     }
+    console.log(url)
     const context = {};
-    renderToString(req, res, <StaticRouter context={context} location={req.url}><RootRouter /></StaticRouter>)
+    // renderToString(req, res, <StaticRouter context={context} location={url}><RootRouter /></StaticRouter>)
+    renderToString(req, res, <StaticRouter context={context} location={url}><RootRouter /></StaticRouter>)
     // renderToNodeStream(req, res, Component)
     // 获取后返回？
-})
+}
+// 这块有一个nginx确认路由需要搞一下
+app.get('/sub', hehe)
+app.get('/main', hehe)
 
 // 打包后的文件夹
 app.use(express.static(path.resolve(__dirname, '../build')))
@@ -49,10 +53,8 @@ function renderToString(req, res, jsx) {
     let template = fs.readFileSync(path.resolve(__dirname, '../public/index.html'), {
         encoding: "utf-8"
     });
-    console.log(template)
     template = template.replace('INNER', result)
     // send 只能写一次
-    console.log(template)
     res.send(template);
 }
 

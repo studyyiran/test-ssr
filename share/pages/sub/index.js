@@ -1,5 +1,6 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 export const Sub = () => {
-    return <div>Sub</div>
+    return <Link to="/main">Sub</Link>
 }
