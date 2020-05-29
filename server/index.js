@@ -4,6 +4,10 @@ import React from 'react';
 // 注意是什么包体
 import ReactDOMServer from 'react-dom/server';
 import {TestPage} from "../share/test";
+
+import {matchPath, StaticRouter} from 'react-router-dom'
+import {routerConfig} from '../share/routerConfig'
+import {RootRouter} from '../share/router'
 const fs = require('fs')
 const path = require('path')
 
@@ -11,20 +15,32 @@ const app = express();
 
 app.get('', (req, res) => {
     console.log('get ')
-    // 路由匹配
-    const Component = TestPage
-    renderToString(req, res, Component)
+    const url = req.url;
+    // 这块路由匹配是一套。ssr是一套。单元没问题
+    const targetRouter = routerConfig.find(({component, ...other}) => {
+        return matchPath(url, {...other})
+    })
+    if (targetRouter && targetRouter.component) {
+        // const Component = targetRouter.component
+        // 路由匹配
+        // const jsx = <RootRouter history={StaticRouterHistory} Component={Component} />
+        // 传入html头 尾
+
+        // 传入外部的layout
+
+    } else {
+    }
+    const context = {};
+    renderToString(req, res, <StaticRouter context={context} location={req.url}><RootRouter /></StaticRouter>)
     // renderToNodeStream(req, res, Component)
-
-
     // 获取后返回？
 })
 
 // 打包后的文件夹
 app.use(express.static(path.resolve(__dirname, '../build')))
 
-function renderToString(req, res, Component) {
-    const result = ReactDOMServer.renderToString(<Component />)
+function renderToString(req, res, jsx) {
+    const result = ReactDOMServer.renderToString(jsx)
     // 这块应该读取html。然后插入进去
     // 不知道为什么这里获取不到。这令我务必困惑。非常困惑。
     // 为什么他会认为我在根路径，而不是server.js的文件路径呢？
