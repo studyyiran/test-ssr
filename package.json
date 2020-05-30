@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./build.sh",
+    "start": "./script/start.sh",
     "buildfront": "npx webpack --config webpackConfig/browser.webpack.js",
     "buildserver": "npx webpack --config webpackConfig/server.webpack.js",
     "hehe": "官方脚手架，并没有放到devDep里面。记得babel还需要安装一堆玩应 还需要babelrc文件 记得webpack需要安装"

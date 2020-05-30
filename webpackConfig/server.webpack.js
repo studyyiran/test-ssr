@@ -15,6 +15,7 @@ module.exports = {
         filename: 'server.js'
     },
     module: {
+        // rule包括了 test 和 rule
         rules: [
             {
                 // 正则不要带冒号
@@ -24,7 +25,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ["style-loader", "css-loader"]
+                use: ["css-loader"]
             }
         ]
     }
