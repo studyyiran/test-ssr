@@ -23,6 +23,7 @@ module.exports = {
                 // exclude: /(node_modulse)/,
                 use: ['babel-loader'],
             },
+            // server不能有style-loader。
             {
                 test: /\.css$/,
                 use: ["css-loader"]
