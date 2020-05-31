@@ -6,7 +6,8 @@ module.exports = {
     node: {
         __dirname: false,
     },
-    entry: './server/index.js',
+    // 这个entry是怎么定的，我还是没搞懂。
+    entry: './src/server/index.js',
     // output: './browser/index.js',
     output: {
         // output的路径麻烦一些 revolve

@@ -1,5 +1,5 @@
-import {Main} from "./pages/main";
-import {Sub} from "./pages/sub";
+import {Main} from "./main";
+import {Sub} from "./sub";
 
 export const routerConfig = [
     {

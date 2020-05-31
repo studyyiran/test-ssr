@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-    entry: './browser/index.js',
+    entry: './src/browser/index.js',
     // output: './browser/index.js',
     output: {
         // output的路径麻烦一些 revolve
@@ -20,8 +20,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"]
-            },
-
+            }
         ]
     }
 }

@@ -3,11 +3,11 @@ import React from 'react';
 // import ReactDom from 'react-dom';
 // 注意是什么包体
 import ReactDOMServer from 'react-dom/server';
-import {TestPage} from "../share/test";
+import {TestPage} from "../pages/test";
 
 import {matchPath, StaticRouter} from 'react-router-dom'
-import {routerConfig} from '../share/routerConfig'
-import {RootRouter} from '../share/router'
+import {routerConfig} from '../pages/routerConfig'
+import {App} from '../app'
 const fs = require('fs')
 const path = require('path')
 
@@ -22,7 +22,7 @@ function hehe (req, res) {
     if (targetRouter && targetRouter.component) {
         // const Component = targetRouter.component
         // 路由匹配
-        // const jsx = <RootRouter history={StaticRouterHistory} Component={Component} />
+        // const jsx = <App history={StaticRouterHistory} Component={Component} />
         // 传入html头 尾
 
         // 传入外部的layout
@@ -31,8 +31,8 @@ function hehe (req, res) {
     }
     console.log(url)
     const context = {};
-    // renderToString(req, res, <StaticRouter context={context} location={url}><RootRouter /></StaticRouter>)
-    renderToString(req, res, <StaticRouter context={context} location={url}><RootRouter /></StaticRouter>)
+    // renderToString(req, res, <StaticRouter context={context} location={url}><App /></StaticRouter>)
+    renderToString(req, res, <StaticRouter context={context} location={url}><App /></StaticRouter>)
     // renderToNodeStream(req, res, Component)
     // 获取后返回？
 }
